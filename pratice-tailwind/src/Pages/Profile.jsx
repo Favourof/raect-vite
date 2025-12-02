@@ -1,21 +1,34 @@
-import React, { useContext } from 'react'
-import { UserContext } from '../Context/context'
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext } from "react";
+import Navbar from "../component/Navbar";
+import { UserContext } from "../context/context";
 
-export default function Profile() {
-    // const [userData, setUserData] = useState("")
-    const { user } = useContext(UserContext)
-    const navigate = useNavigate();
+const Profile = () => {
+  const { user } = useContext(UserContext);
 
-    console.log(user);
+  return (
+    <div>
+      <Navbar />
+      <div className="p-6">
+        <h2 className="text-2xl font-bold mb-4">Profile</h2>
 
-    return (
-        <>
-            <div> profile </div>
-            <button onClick={() => navigate("/settings")}>settings</button>
-        </>
+        {user ? (
+          <div className="bg-white shadow-md p-4 rounded max-w-md">
+            <p className="mb-2">
+              <span className="font-semibold">Name:</span> {user.name}
+            </p>
+            <p className="mb-2">
+              <span className="font-semibold">Email:</span> {user.email}
+            </p>
+            <p className="mb-2">
+              <span className="font-semibold">Joined:</span> {user.joined}
+            </p>
+          </div>
+        ) : (
+          <p>No user data available</p>
+        )}
+      </div>
+    </div>
+  );
+};
 
-
-
-    )
-}
+export default Profile;
