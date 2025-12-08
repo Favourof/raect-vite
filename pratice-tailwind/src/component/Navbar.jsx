@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { UserContext } from "../context/context";
+import { CartContext, UserContext } from "../context/context";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
     const { user, logout } = useContext(UserContext);
+    const { cart } = useContext(CartContext)
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -15,6 +16,8 @@ const Navbar = () => {
         <nav className="flex justify-between items-center p-4 bg-blue-500 text-white">
             <h1 className="text-xl font-bold">Dashboard</h1>
             <div className="flex items-center gap-4">
+                
+                <p>cart{cart.length}</p>
                 <Link to="/dashboard" className="hover:underline">Home</Link>
                 <Link to="/profile" className="hover:underline">Profile</Link>
                 {user && <span>Welcome, {user.name}</span>}

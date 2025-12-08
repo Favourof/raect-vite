@@ -1,18 +1,23 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/context";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const { login } = useContext(UserContext);
   const navigate = useNavigate();
+  const location = useLocation()
+
+  const from = location.state.from.pathname || "/dashboard"
+  console.log(from);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!username) return alert("Enter a username");
     login(username)
     // login(username);
-    navigate("/dashboard"); // redirect to dashboard
+    navigate(from); // redirect to dashboard
   };
 
   return (

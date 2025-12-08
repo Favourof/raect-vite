@@ -7,7 +7,7 @@ import Profile from "./Profile";
 
 const Dashboard = () => {
   const { user } = useContext(UserContext);
-  const { cart } = useContext(CartContext)
+  const { cart, addToCart, RemoveFromCart } = useContext(CartContext)
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
@@ -68,11 +68,11 @@ const Dashboard = () => {
         <div className="grid gap-4 grid-cols-3">
           {
             product?.map((prod) => (
-              <div className="border-2 p-4">
+              <div key={prod.id} className="border-2 p-4">
                 <h2>{prod.title}</h2>
                 <img className="w-20" src={prod.image} alt={prod.title} />
                 <p>{prod.description.slice(0, 100)}</p>
-                <button className="border-1">-</button> < button className="border-1">+</button>
+                <button className="border-1" onClick={() => RemoveFromCart(prod.id)}>-</button> < button className="border-1" onClick={() => addToCart(prod)}>+</button>
               </div>
 
             ))
