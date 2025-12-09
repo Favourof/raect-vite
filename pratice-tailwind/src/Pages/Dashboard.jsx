@@ -1,7 +1,7 @@
 // import React, { useContext } from "react";
 import { useContext, useEffect, useState } from "react";
 import Navbar from "../component/Navbar";
-import { CartContext, UserContext } from "../context/context";
+import { CartContext, UserContext } from "../Context/context";
 import Profile from "./Profile";
 
 
