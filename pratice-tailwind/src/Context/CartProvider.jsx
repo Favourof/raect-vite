@@ -22,9 +22,24 @@ export const CartProvider = ({ children }) => {
     }
 
     const RemoveFromCart = (id) => {
-        if (cart.length == 0) return alert("cart is empty")
-        setCart((prev) => prev.filter((item) => item.id !== id))
-    }
+        setCart((prev) => {
+            const item = prev.find((p) => p.id === id);
+
+            if (!item) return prev;
+
+
+            if (item.quantity > 1) {
+                return prev.map((prod) =>
+                    prod.id === id
+                        ? { ...prod, quantity: prod.quantity - 1 }
+                        : prod
+                );
+            }
+
+
+            return prev.filter((prod) => prod.id !== id);
+        });
+    };
 
 
     const clearCart = () => {
