@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Login from "../Pages/Login";
-import Dashboard from "../pages/Dashboard";
-import Profile from "../pages/Profile";
-import Settings from "../pages/Settings";
+import Dashboard from "./../pages/Dashboard";
+import Profile from "./../pages/Profile";
+import Settings from "./../pages/Settings";
 import ProtectedRoute from "./ProtectedRoute";
 
 export const AppRoutes = () => {
