@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { CartContext, UserContext } from "../context/context";
+import { CartContext, UserContext } from "../Context/context";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -16,7 +16,7 @@ const Navbar = () => {
         <nav className="flex justify-between items-center p-4 bg-blue-500 text-white">
             <h1 className="text-xl font-bold">Dashboard</h1>
             <div className="flex items-center gap-4">
-                
+
                 <p>cart{cart.length}</p>
                 <Link to="/dashboard" className="hover:underline">Home</Link>
                 <Link to="/profile" className="hover:underline">Profile</Link>
